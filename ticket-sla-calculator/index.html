@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket SLA Calculator</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <main class="container">
+
+        <header class="page-headeer">
+            <h1>Ticket SLA Calculator</h1>
+            <p>Calculate ticket resolution time and SLA performance</p>
+        </header>
+
+        <section class="calculator-card">
+
+            <h2>Ticket Information</h2>
+ 
+            <div class="form-group">
+                <label for="ticketId">Ticket ID</label>
+                <input type="text" id="ticketId" placeholder="Enter Ticket ID">
+            </div>
+                
+            <div class="form-row">
+
+                <div class="form-group">      
+                    <label for="createdTime">Created Date & Time</label>
+                    <input type="datetime-local" id="createdTime">
+                </div>
+                
+                <div class="form-group">
+                    <label for="closedTime">Closed Date & Time</label>
+                    <input type="datetime-local" id="closedTime">                
+                </div>
+                
+            </div>
+
+            <div class="form-group">
+                <label for="slaHours">SLA Allowed (Hours)</label>
+                <input type="text" id="slaHours" placeholder="e.g. 4">
+            </div>
+            
+            <div class="button-group">
+
+                <button id="calculateBtn" class="calculate-btn">
+                    Calculate SLA
+                </button>
+                
+                <button id="resetBtn" class="reset-btn">
+                    Reset
+                </button>
+                
+            </div>
+
+        </section>
+
+        <section id="result" class="result-card">
+
+            <div id="result">
+                <p>Enter Ticket Information and click Calculate SLA</p>                
+            </div>
+
+        </section>
+
+    </main>
+        
+    <script src="script.js"></script>
+        
+</body>
+
+</html>

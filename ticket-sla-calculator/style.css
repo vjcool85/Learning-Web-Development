@@ -1,0 +1,194 @@
+* {
+    box-sizing: border-box;
+    margin: 0;;
+    padding: 0;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.container {
+/* max-width: 600px;
+margin: auto;
+background-color: white;
+padding: 30px;
+border-radius: 10px; */
+width: 100%;
+max: width 800px;
+margin: 0 auto;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.page-header h1 {
+margin-bottom: 10px;
+}
+
+.page-header p {
+    color: #666;
+}
+
+
+.calculator-card, .result-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 30px 10px rgba(0, 0, 0, 0.08);
+    }
+
+
+.calculator-card h2 {
+    margin-bottom: 25px;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    /* box-sizing: border-box; */
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.button-group button {
+    width: 100%;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.calculate-btn {
+background: #2563eb;
+color: white
+}
+
+.reset-btn {
+    background: #e5e7eb;
+}
+
+.result-card {
+    min-height: 150px;
+}
+
+.empty-result {
+    text-align: center;
+    color: #777;
+}
+
+#result {
+    margin-top: 25px;
+}
+
+.sla-status.met {
+    color:green;
+    font-size: 12;
+    font-weight: 600;
+}
+
+.sla-status.breached {
+    color:red;
+}
+
+.error-message {
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 5px solid #dc2626;
+    background: #fef2f2;
+}
+
+.error-message h2 {
+    margin-bottom: 10px;
+    color: #dc2626;
+}
+
+.error-message ul {
+    padding-left: 20px;
+}
+
+.error-message li {
+    margin-bottom: 5px;
+}
+
+.progress-container {
+    width: 100%;
+    height: 20px;
+    background: #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 15px 0 20px;
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+.progress-bar.met {
+    background: green;
+}
+
+.progress-bar.breached {
+    background: red;
+}@media (max-width: 600px) {
+
+    body {
+        padding: 20px 10px;
+    }
+
+    .calculator-card,
+    .result-card {
+        padding: 20px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .button-group button {
+        width: 100%;
+    }
+
+    .page-header h1 {
+        font-size: 26px;
+    }
+}
+
+

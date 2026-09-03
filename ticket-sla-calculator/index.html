@@ -7,66 +7,218 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
+
 <body>
     <main class="container">
 
-        <header class="page-headeer">
+        <header class="page-header">
             <h1>Ticket SLA Calculator</h1>
             <p>Calculate ticket resolution time and SLA performance</p>
         </header>
 
-        <section class="calculator-card">
+        <nav class="main-nav">
+            <button class="nav-btn active" data-page="dashboard">
+                Dashboard
+            </button>
 
-            <h2>Ticket Information</h2>
- 
-            <div class="form-group">
-                <label for="ticketId">Ticket ID</label>
-                <input type="text" id="ticketId" placeholder="Enter Ticket ID">
-            </div>
+            <button class="nav-btn" data-page="calculator">
+                Calculator
+            </button>
+
+            <button class="nav-btn" data-page="tickets">
+                Tickets
+            </button>
+        </nav>
+
+        <section id="calculator" class="page-section">
+            
+            <section id="result" class="result-card">
+                    <p>Enter Ticket Information and click Calculate SLA</p>                
+            </section>
+
+
+
+
+            <section class="calculator-card">
+    
+                <h2>Ticket Information</h2>
+     
+                <div class="form-group">
+                    <label for="ticketId">Ticket ID</label>
+                    <input type="text" id="ticketId" placeholder="Enter Ticket ID">
+                </div>
                 
-            <div class="form-row">
-
-                <div class="form-group">      
-                    <label for="createdTime">Created Date & Time</label>
-                    <input type="datetime-local" id="createdTime">
+                <div class="form-row">
+                    
+                    <div class="form-group">      
+                        <label for="createdTime">Created Date & Time</label>
+                        <input type="datetime-local" id="createdTime">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="closedTime">Closed Date & Time</label>
+                        <input type="datetime-local" id="closedTime">                
+                    </div>
+                    
                 </div>
                 
                 <div class="form-group">
-                    <label for="closedTime">Closed Date & Time</label>
-                    <input type="datetime-local" id="closedTime">                
+                    <label for="slaHours">SLA Allowed (Hours)</label>
+                    <input type="text" id="slaHours" placeholder="e.g. 4">
                 </div>
                 
-            </div>
+                <div class="button-group">
+                    
+                    <button id="calculateBtn" class="calculate-btn">
+                        Calculate SLA
+                    </button>
+                    
+                    <button id="cancelEditBtn" type="button">
+                        Cancel
+                    </button>
+                    
+                    <button id="resetBtn" class="reset-btn">
+                        Reset
+                    </button>
+                    
+                    <!-- <button id="exportBtn">
+                        Export CSV
+                    </button> -->
+                    
+                </div>
+                
+            </section>
+        </section>
 
-            <div class="form-group">
-                <label for="slaHours">SLA Allowed (Hours)</label>
-                <input type="text" id="slaHours" placeholder="e.g. 4">
-            </div>
+        
             
-            <div class="button-group">
+        
 
-                <button id="calculateBtn" class="calculate-btn">
-                    Calculate SLA
-                </button>
-                
-                <button id="resetBtn" class="reset-btn">
-                    Reset
-                </button>
-                
-            </div>
+        <!-- Dashboard -->      
+        <!-- <section class="tickets-section"> -->
+        <section id="dashboard" class="page-section dashboard active">
+           
+            <!-- <div id="dashboard" class="dashboard"> -->
+                <table class ="dashboard-table">
+                    <thead>
+                        <tr>
+                            <th>Total Tickets</th>
+                            <th>Normal</th>
+                            <th>Approaching SLA</th>
+                            <th>SLA Breached</th>
+                        </tr>
+                    </thead>
 
+                    <tbody>
+                        <tr>
+                            <td id="totalTickets">0</td>
+                            <td id="normalTickets">0</td>
+                            <td id="approachingTickets">0</td>
+                            <td id="breachedTickets">0</td>
+                        </tr>
+                    </tbody>
+                </table>    
+            <!-- </div> -->
         </section>
 
-        <section id="result" class="result-card">
+        <!-- Tickets -->
+        <section id="tickets" class="page-section tickets-section">
 
-            <div id="result">
-                <p>Enter Ticket Information and click Calculate SLA</p>                
+            <h2>Tickets</h2>
+
+            <div class="export-section">
+
+                <h3>Export Tickets</h3>
+
+                <div class="export-options">
+
+                    <label>
+                        Export:
+                        <select id="exportScope">
+                            <option value="all">All Tickets</option>
+                            <option value="filtered">Currently Filtered Tickets</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Format:
+                        <select id="exportFormat">
+                            <option value="csv">CSV</option>
+                            <option value="xlsx">Excel</option>
+                            <option value="pdf">PDF</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            id="includeTimestamp"
+                            checked
+                        >
+                        Include export timestamp
+                    </label>
+
+                    <button id="exportBtn">
+                        Export
+                    </button>
+
+                </div>
+
             </div>
 
-        </section>
+            <!-- Date Filter -->
+            <div class="date-filter">
+
+                <label for="createdFrom">Created From:</label>
+                <input type="date" id="createdFrom">
+
+                <label for="createdTo">Created To:</label>
+                <input type="date" id="createdTo">
+
+                <!-- <button id="clearDateFilter">Clear</button> -->
+
+            </div>
+
+            <!-- Search and Status Filter -->
+            <div class="filters">
+
+                <div>
+                    <label for="searchTicket">Search Ticket</label>
+                    <input
+                        type="text"
+                        id="searchTicket"
+                        placeholder="Enter ticket ID..."
+                    >
+                </div>
+
+                <div>
+                    <label for="statusFilter">Status</label>
+
+                    <select id="statusFilter">
+                        <option value="all">All</option>
+                        <option value="normal">Normal</option>
+                        <option value="approaching">Approaching SLA</option>
+                        <option value="breached">SLA Breached</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <!-- Ticket Table -->
+            <div id="ticketList" class="table-container"></div>
+
+            <!-- Pagination -->
+            <div id="pagination" class="pagination"></div>
+
+        </section>    
+
 
     </main>
-        
+     
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.4/jspdf.plugin.autotable.min.js"></script>
+
     <script src="script.js"></script>
         
 </body>
